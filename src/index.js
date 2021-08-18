@@ -36,4 +36,21 @@ function diplayTodoList() {
   }
 }
 
-diplayTodoList()
+diplayTodoList();
+
+function addNewItem() {
+  if (addNewTodo.value !== '') {
+    const index = todos.length + 1;
+    todos.push({ description: addNewTodo.value, completed: 0, index });
+    localStorage.setItem('todos', JSON.stringify(todos));
+    addNewTodo.value = '';
+    todoList.innerHTML = '';
+    diplayTodoList();
+  }
+}
+
+addNewTodo.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    addNewItem();
+  }
+});
