@@ -14,7 +14,6 @@ function diplayTodoList() {
     JSON.parse(data).forEach((val) => {
       const li = document.createElement('li');
       li.classList.add('list-group-item');
-      // li.setAttribute('draggable', true);
 
       const text = `
       <div class="d-flex dragTodo" id="${val.index}" draggable="true">
@@ -35,7 +34,7 @@ function diplayTodoList() {
     });
   }
 
-  //Delete function
+  // Delete function
   const deleteBtns = document.querySelectorAll('.deleteBtn');
   deleteBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
