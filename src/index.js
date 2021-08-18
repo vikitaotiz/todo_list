@@ -34,7 +34,6 @@ function diplayTodoList() {
     });
   }
 
-  // Delete function
   const deleteBtns = document.querySelectorAll('.deleteBtn');
   deleteBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
@@ -48,7 +47,6 @@ function diplayTodoList() {
     });
   });
 
-  // complete task functionality
   const checkTodos = document.querySelectorAll('.checkTodo');
   checkTodos.forEach((check) => {
     check.addEventListener('change', (e) => {
@@ -68,7 +66,6 @@ function diplayTodoList() {
     });
   });
 
-  // Edit content function
   const editBtns = document.querySelectorAll('#editDescription');
   editBtns.forEach((btn) => {
     btn.addEventListener('keypress', (e) => {
