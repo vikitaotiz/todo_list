@@ -1,0 +1,24 @@
+body {
+  background: rgb(212, 212, 212);
+}
+.wrapper {
+  width: 500px;
+  margin: auto;
+}
+
+.header {
+  text-align: center;
+}
+
+.drag {
+  cursor: move;
+}
+
+.checkTodo {
+  margin-right: 10px;
+}
+
+.completeTask {
+  text-decoration: line-through;
+  color: grey;
+}
