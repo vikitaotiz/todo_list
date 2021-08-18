@@ -46,6 +46,40 @@ function diplayTodoList() {
       diplayTodoList();
     });
   });
+
+  const checkTodos = document.querySelectorAll('.checkTodo');
+  checkTodos.forEach((check) => {
+    check.addEventListener('change', (e) => {
+      const todosArray = JSON.parse(localStorage.getItem('todos'));
+      const todoObject = todosArray.find((todo) => todo.index === Number(e.target.parentNode.id));
+      const index = todosArray.indexOf(todoObject);
+
+      if (!todosArray[index].completed) {
+        todosArray[index].completed = 1;
+        e.target.parentNode.children[1].classList.add('completeTask');
+        localStorage.setItem('todos', JSON.stringify(todosArray));
+      } else {
+        todosArray[index].completed = 0;
+        e.target.parentNode.children[1].classList.remove('completeTask');
+        localStorage.setItem('todos', JSON.stringify(todosArray));
+      }
+    });
+  });
+
+  const editBtns = document.querySelectorAll('#editDescription');
+  editBtns.forEach((btn) => {
+    btn.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && e.target.textContent) {
+        const todosArray = JSON.parse(localStorage.getItem('todos'));
+        const todoObject = todosArray.find((todo) => todo.index === Number(e.target.parentNode.id));
+        const index = todosArray.indexOf(todoObject);
+        todosArray[index].description = e.target.textContent;
+        localStorage.setItem('todos', JSON.stringify(todosArray));
+        todoList.innerHTML = '';
+        diplayTodoList();
+      }
+    });
+  });
 }
 
 diplayTodoList();
@@ -65,4 +99,16 @@ addNewTodo.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     addNewItem();
   }
+});
+
+clearCompleted.addEventListener('click', () => {
+  const todosArray = JSON.parse(localStorage.getItem('todos'));
+  const itemsToBeDeleted = todosArray.filter((val) => val.completed);
+  itemsToBeDeleted.forEach((val) => {
+    const index = todosArray.indexOf(val);
+    todosArray.splice(index, 1);
+    localStorage.setItem('todos', JSON.stringify(todosArray));
+  });
+  todoList.innerHTML = '';
+  diplayTodoList();
 });
