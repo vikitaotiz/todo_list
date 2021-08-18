@@ -13,6 +13,25 @@
     />
   </head>
   <body>
-    <h1>Todo Application</h1>
+    <div class="container p-5">
+      <div class="wrapper">
+        <div class="card mt-5 shadow">
+          <h1 class="text-center mt-2 border-bottom">TODO List App</h1>
+          <div class="header">
+            <input
+              type="text"
+              class="addNewTodo form-control border-white border-bottom"
+              placeholder="Add new todo..."
+            />
+          </div>
+          <ul id="todoList" class="list-group list-group-flush"></ul>
+          <div class="d-grid">
+            <button type="button" class="btn" id="clearCompleted">
+              Clear All Completed
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
