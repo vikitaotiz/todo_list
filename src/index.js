@@ -1,5 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
+import addNewItem from './addTodo.js';
+import clearCompletedTodos from './clearCompletedTodos.js';
+import removeTodo from './removeTodo.js';
+import editTodo from './editTodo.js';
+import completeTask from './completeTask.js';
 
 const addNewTodo = document.querySelector('.addNewTodo');
 const todoList = document.querySelector('#todoList');
@@ -37,21 +42,44 @@ function diplayTodoList() {
   const checkTodos = document.querySelectorAll('.checkTodo');
   checkTodos.forEach((check) => {
     check.addEventListener('change', (e) => {
-      const todosArray = JSON.parse(localStorage.getItem('todos'));
-      const todoObject = todosArray.find((todo) => todo.index === Number(e.target.parentNode.id));
-      const index = todosArray.indexOf(todoObject);
+      completeTask(e);
+    });
+  });
 
-      if (!todosArray[index].completed) {
-        todosArray[index].completed = 1;
-        e.target.parentNode.children[1].classList.add('completeTask');
-        localStorage.setItem('todos', JSON.stringify(todosArray));
-      } else {
-        todosArray[index].completed = 0;
-        e.target.parentNode.children[1].classList.remove('completeTask');
-        localStorage.setItem('todos', JSON.stringify(todosArray));
+  const editBtns = document.querySelectorAll('#editDescription');
+  editBtns.forEach((btn) => {
+    btn.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && e.target.textContent) {
+        editTodo(e);
+        todoList.innerHTML = '';
+        diplayTodoList();
       }
+    });
+  });
+
+  const deleteBtns = document.querySelectorAll('.deleteBtn');
+  deleteBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      removeTodo(e);
+      todoList.innerHTML = '';
+      diplayTodoList();
     });
   });
 }
 
 diplayTodoList();
+
+addNewTodo.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    addNewItem(todos, addNewTodo.value);
+    todoList.innerHTML = '';
+    diplayTodoList();
+    addNewTodo.value = '';
+  }
+});
+
+clearCompleted.addEventListener('click', () => {
+  clearCompletedTodos();
+  todoList.innerHTML = '';
+  diplayTodoList();
+});
