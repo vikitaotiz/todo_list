@@ -4,11 +4,11 @@ export default (e) => {
   const index = todosArray.indexOf(todoObject);
 
   if (!todosArray[index].completed) {
-    todosArray[index].completed = 1;
+    todosArray[index].completed = true;
     e.target.parentNode.children[1].classList.add('completeTask');
     localStorage.setItem('todos', JSON.stringify(todosArray));
   } else {
-    todosArray[index].completed = 0;
+    todosArray[index].completed = false;
     e.target.parentNode.children[1].classList.remove('completeTask');
     localStorage.setItem('todos', JSON.stringify(todosArray));
   }
