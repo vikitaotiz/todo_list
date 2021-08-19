@@ -13,6 +13,11 @@ const clearCompleted = document.querySelector('#clearCompleted');
 
 const todos = [];
 
+function updateUi() {
+  todoList.innerHTML = '';
+  diplayTodoList();
+}
+
 function diplayTodoList() {
   displayTodos();
 
@@ -28,8 +33,7 @@ function diplayTodoList() {
     btn.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' && e.target.textContent) {
         editTodo(e);
-        todoList.innerHTML = '';
-        diplayTodoList();
+        updateUi()
       }
     });
   });
@@ -38,8 +42,7 @@ function diplayTodoList() {
   deleteBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       removeTodo(e);
-      todoList.innerHTML = '';
-      diplayTodoList();
+      updateUi()
     });
   });
 }
@@ -49,14 +52,12 @@ diplayTodoList();
 addNewTodo.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     addNewItem(todos, addNewTodo.value);
-    todoList.innerHTML = '';
-    diplayTodoList();
+    updateUi()
     addNewTodo.value = '';
   }
 });
 
 clearCompleted.addEventListener('click', () => {
   clearCompletedTodos();
-  todoList.innerHTML = '';
-  diplayTodoList();
+  updateUi();
 });
