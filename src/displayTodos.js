@@ -1,6 +1,6 @@
 export default () => {
-    const data = localStorage.getItem('todos');
-    
+  const data = localStorage.getItem('todos');
+
   if (data) {
     JSON.parse(data).forEach((val) => {
       const li = document.createElement('li');
@@ -24,4 +24,4 @@ export default () => {
       todoList.appendChild(li);
     });
   }
-}
+};

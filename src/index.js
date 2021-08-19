@@ -33,7 +33,7 @@ function diplayTodoList() {
     btn.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' && e.target.textContent) {
         editTodo(e);
-        updateUi()
+        updateUi();
       }
     });
   });
@@ -42,7 +42,7 @@ function diplayTodoList() {
   deleteBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       removeTodo(e);
-      updateUi()
+      updateUi();
     });
   });
 }
@@ -52,7 +52,7 @@ diplayTodoList();
 addNewTodo.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     addNewItem(todos, addNewTodo.value);
-    updateUi()
+    updateUi();
     addNewTodo.value = '';
   }
 });
