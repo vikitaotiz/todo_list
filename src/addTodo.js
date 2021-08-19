@@ -4,6 +4,8 @@ export default (todos, todo) => {
     todos.push({ description: todo, completed: 0, index });
     localStorage.setItem('todos', JSON.stringify(todos));
   } else {
+    /* eslint-disable */
     alert('Cannot add blank todo!');
+    /* eslint-enable */
   }
 };

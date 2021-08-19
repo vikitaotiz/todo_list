@@ -1,4 +1,4 @@
-export default () => {
+export default (todoList) => {
   const data = localStorage.getItem('todos');
 
   if (data) {

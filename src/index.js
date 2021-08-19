@@ -15,11 +15,13 @@ const todos = [];
 
 function updateUi() {
   todoList.innerHTML = '';
+  /* eslint-disable */
   diplayTodoList();
+  /* eslint-enable */
 }
 
 function diplayTodoList() {
-  displayTodos();
+  displayTodos(todoList);
 
   const checkTodos = document.querySelectorAll('.checkTodo');
   checkTodos.forEach((check) => {
