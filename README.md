@@ -16,7 +16,7 @@ This is a simple javascript todo list application. The project tests CRUD functi
 
 ## Screenshot
 
-![print](https://user-images.githubusercontent.com/42869046/129937492-3a4255ed-7d25-43b0-be60-eac388995ac6.JPG)
+![print](https://user-images.githubusercontent.com/42869046/130570148-f41a0939-0b27-4867-8607-e4a6842232d3.JPG)
 
 ## Getting Started
 
