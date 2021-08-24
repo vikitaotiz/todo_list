@@ -7,12 +7,8 @@ body {
   margin: auto;
 }
 
-.header {
-  text-align: center;
-}
-
-.drag {
-  cursor: move;
+.deleteBtn {
+  color: red;
 }
 
 .checkTodo {

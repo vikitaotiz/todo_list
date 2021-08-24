@@ -17,7 +17,6 @@ export default (todoList) => {
         <span class="drag"></span>
         </div>
          <i class="fas fa-trash deleteBtn m-2"></i>
-         <i class="fas fa-grip-vertical m-2 drag"></i>
       </div>`;
 
       li.innerHTML = text;

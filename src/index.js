@@ -10,8 +10,7 @@ import displayTodos from './displayTodos.js';
 const addNewTodo = document.querySelector('.addNewTodo');
 const todoList = document.querySelector('#todoList');
 const clearCompleted = document.querySelector('#clearCompleted');
-
-const todos = [];
+const todos = JSON.parse(localStorage.getItem('todos'));
 
 function updateUi() {
   todoList.innerHTML = '';
@@ -23,15 +22,15 @@ function updateUi() {
 function diplayTodoList() {
   displayTodos(todoList);
 
-  const checkTodos = document.querySelectorAll('.checkTodo');
-  checkTodos.forEach((check) => {
+  const checkBoxes = document.querySelectorAll('.checkTodo');
+  checkBoxes.forEach((check) => {
     check.addEventListener('change', (e) => {
-      completeTask(e);
+      completeTask(e.target.parentNode);
     });
   });
 
-  const editBtns = document.querySelectorAll('#editDescription');
-  editBtns.forEach((btn) => {
+  const contentEditables = document.querySelectorAll('#editDescription');
+  contentEditables.forEach((btn) => {
     btn.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' && e.target.textContent) {
         editTodo(e);
@@ -49,8 +48,6 @@ function diplayTodoList() {
   });
 }
 
-diplayTodoList();
-
 addNewTodo.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     addNewItem(todos, addNewTodo.value);
@@ -63,3 +60,5 @@ clearCompleted.addEventListener('click', () => {
   clearCompletedTodos();
   updateUi();
 });
+
+window.onload = () => { diplayTodoList(); };
