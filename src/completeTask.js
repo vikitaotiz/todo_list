@@ -1,4 +1,5 @@
-export default (node) => {
+export default (e) => {
+  const node = e.target.parentNode;
   const todosArray = JSON.parse(localStorage.getItem('todos'));
   const todoObject = todosArray.find((todo) => todo.index === Number(node.id));
   const index = todosArray.indexOf(todoObject);
