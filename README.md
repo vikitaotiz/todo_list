@@ -2,7 +2,7 @@
 
 TODO List Application
 
-This is a simple javascript todo list application. The project tests CRUD functionality.
+This is a simple javascript todo list applications. The project tests CRUD functionality.
 
 ## Built With
 
